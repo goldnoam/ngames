@@ -13,10 +13,6 @@ interface GameCardProps {
 const GameCard: React.FC<GameCardProps> = ({ game }) => {
   const is3DModel = game.realTimePreviewUrl.endsWith('.glb');
 
-  // State for thumbnail image loading and errors
-  const [thumbnailLoaded, setThumbnailLoaded] = useState(false);
-  const [thumbnailError, setThumbnailError] = useState(false);
-
   // State and ref for 3D model viewer loading and errors
   const modelViewerRef = useRef<ModelViewerElement>(null);
   const [modelStatus, setModelStatus] = useState<'loading' | 'loaded' | 'error'>('loading');
@@ -51,25 +47,6 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
       rel="noopener noreferrer"
       className="block group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 ease-in-out transform-gpu hover:-translate-y-2 hover:rotate-x-3 hover:-rotate-y-3"
     >
-      <div className="relative overflow-hidden h-56 bg-gray-200 dark:bg-gray-700">
-        {!thumbnailLoaded && !thumbnailError && (
-          <div className="absolute inset-0 flex items-center justify-center text-gray-500 dark:text-gray-400">Loading Thumbnail...</div>
-        )}
-        {thumbnailError && (
-           <div className="absolute inset-0 flex items-center justify-center text-red-500 bg-gray-100 dark:bg-gray-800">Thumbnail failed to load</div>
-        )}
-        <img
-          src={game.thumbnailUrl}
-          alt={`Thumbnail for ${game.title}`}
-          className={`w-full h-full object-cover transition-opacity duration-300 group-hover:scale-110 ${thumbnailLoaded && !thumbnailError ? 'opacity-100' : 'opacity-0'}`}
-          onLoad={() => setThumbnailLoaded(true)}
-          onError={() => setThumbnailError(true)}
-          loading="lazy"
-        />
-        {thumbnailLoaded && !thumbnailError && (
-          <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-20 transition-all duration-300"></div>
-        )}
-      </div>
       <div className="p-6">
         <div className="w-full h-48 mb-4 rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden bg-gray-100 dark:bg-gray-900 flex items-center justify-center relative">
           {is3DModel ? (
@@ -94,6 +71,9 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
               src={game.realTimePreviewUrl}
               alt={`Real-time preview for ${game.title}`}
               className="w-full h-full object-cover"
+              loading="lazy"
+              width="341"
+              height="192"
             />
           )}
         </div>

@@ -1,16 +1,17 @@
+// FIX: Removed the `/// <reference types="react" />` directive, which was causing a type resolution issue.
 import React from 'react';
 
 export interface Game {
   title: string;
   description: string;
   url: string;
-  thumbnailUrl: string;
   realTimePreviewUrl: string;
 }
 
-// FIX: Corrected the global JSX type definition for 'model-viewer'.
-// The previous definition was overriding all standard HTML element types instead of augmenting them.
-// This version correctly augments the JSX.IntrinsicElements interface.
+// The import of React above ensures that TypeScript loads React's global JSX
+// namespace before this file is processed. This allows the `IntrinsicElements`
+// interface to be correctly augmented, adding support for the 'model-viewer'
+// custom element without overwriting existing HTML elements like 'div', 'h1', etc.
 declare global {
   namespace JSX {
     interface IntrinsicElements {
