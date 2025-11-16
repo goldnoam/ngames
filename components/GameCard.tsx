@@ -60,14 +60,48 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
   const renderPreview = () => {
     switch (previewType) {
       case '3d':
+        const radius = 30;
+        const stroke = 4;
+        const normalizedRadius = radius - stroke * 2;
+        const circumference = normalizedRadius * 2 * Math.PI;
+        const strokeDashoffset = circumference - (progress / 100) * circumference;
+
         return (
           <>
             {modelStatus === 'loading' && (
               <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-900 transition-opacity duration-300">
-                <div className="w-3/4 bg-gray-300 dark:bg-gray-700 rounded-full h-2.5 mb-2 overflow-hidden">
-                    <div className="bg-cyan-600 h-2.5 rounded-full transition-all duration-300 ease-linear" style={{ width: `${progress}%` }}></div>
+                <div className="relative flex items-center justify-center">
+                  <svg
+                    height={radius * 2}
+                    width={radius * 2}
+                    className="-rotate-90 transition-all duration-300"
+                  >
+                    <circle
+                      className="text-gray-300 dark:text-gray-700"
+                      stroke="currentColor"
+                      fill="transparent"
+                      strokeWidth={stroke}
+                      r={normalizedRadius}
+                      cx={radius}
+                      cy={radius}
+                    />
+                    <circle
+                      className="text-cyan-600"
+                      stroke="currentColor"
+                      fill="transparent"
+                      strokeWidth={stroke}
+                      strokeDasharray={circumference + ' ' + circumference}
+                      style={{ strokeDashoffset, strokeLinecap: 'round' }}
+                      r={normalizedRadius}
+                      cx={radius}
+                      cy={radius}
+                    />
+                  </svg>
+                  <span className="absolute text-sm font-bold text-cyan-600 dark:text-cyan-400">
+                    {`${progress}%`}
+                  </span>
                 </div>
-                <p className="text-sm font-medium">Loading 3D Preview... {progress}%</p>
+                 <p className="text-sm font-medium mt-3 animate-pulse">Loading 3D Preview...</p>
               </div>
             )}
             {modelStatus === 'error' && (
@@ -82,8 +116,10 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
                 />
               ) : (
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-red-500">
-                   <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                    {/* A combination of a 3D cube icon and an X mark to signify a model loading error */}
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9.75L12 2.25 3 7.5m9 5.25V21" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                   <p className="font-semibold">Preview Unavailable</p>
                 </div>

@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 export interface Game {
   title: string;
   description: string;
@@ -6,15 +8,16 @@ export interface Game {
   fallbackImageUrl?: string;
 }
 
-// FIX: By removing the module-level `import React from 'react'` and using inline
-// `import('react')` for types, we ensure TypeScript correctly augments the global
-// JSX namespace instead of overwriting it. This resolves the errors where standard
-// HTML elements were not being recognized.
+// By augmenting the global JSX namespace, we can add support for custom elements like 'model-viewer'.
 declare global {
   namespace JSX {
+    // Fix: Using `extends React.JSX.IntrinsicElements` was incorrectly overwriting the original
+    // IntrinsicElements interface, causing all standard HTML element types to be lost. By removing
+    // the `extends` clause, we now correctly use TypeScript's declaration merging to augment
+    // the interface with our custom 'model-viewer' element.
     interface IntrinsicElements {
-      'model-viewer': import('react').DetailedHTMLProps<
-        import('react').HTMLAttributes<HTMLElement>,
+      'model-viewer': React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement>,
         HTMLElement
       > & {
         src: string;

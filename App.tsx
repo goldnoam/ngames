@@ -14,7 +14,7 @@ const App: React.FC = () => {
       title: t('zombieTitle'),
       description: t('zombieDesc'),
       url: 'https://zombie.vercel.app/',
-      realTimePreviewUrl: 'https://cdn.glitch.global/e5c1a72a-33b0-4a78-9a2f-3f268a24553b/zombie.glb?v=1719588049774',
+      realTimePreviewUrl: 'https://cdn.pixabay.com/photo/2020/10/26/18/14/zombie-5688344_960_720.jpg',
       fallbackImageUrl: 'https://cdn.pixabay.com/photo/2020/10/26/18/14/zombie-5688344_960_720.jpg',
     },
     {
