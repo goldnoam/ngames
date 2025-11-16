@@ -14,7 +14,7 @@ const App: React.FC = () => {
       title: t('zombieTitle'),
       description: t('zombieDesc'),
       url: 'https://zombie.vercel.app/',
-      realTimePreviewUrl: 'https://modelviewer.dev/shared-assets/models/Astronaut.glb',
+      realTimePreviewUrl: 'https://cdn.glitch.global/e5c1a72a-33b0-4a78-9a2f-3f268a24553b/zombie.glb?v=1719588049774',
       fallbackImageUrl: 'https://cdn.pixabay.com/photo/2020/10/26/18/14/zombie-5688344_960_720.jpg',
     },
     {
@@ -24,6 +24,13 @@ const App: React.FC = () => {
       realTimePreviewUrl: 'https://videos.pexels.com/video-files/3840330/3840330-hd_1280_720_25fps.mp4',
       fallbackImageUrl: 'https://cdn.pixabay.com/photo/2016/12/30/21/53/background-1942091_960_720.jpg',
     },
+    {
+      title: t('astroTitle'),
+      description: t('astroDesc'),
+      url: 'https://astrogame.vercel.app/',
+      realTimePreviewUrl: 'https://modelviewer.dev/shared-assets/models/Astronaut.glb',
+      fallbackImageUrl: 'https://cdn.pixabay.com/photo/2016/11/29/05/45/astronomy-1867616_960_720.jpg',
+    }
   ];
 
   return (
@@ -31,7 +38,7 @@ const App: React.FC = () => {
       <Settings />
       <Header />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 [perspective:1000px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 [perspective:1000px]">
           {games.map((game) => (
             <GameCard key={game.title} game={game} />
           ))}

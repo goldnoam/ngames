@@ -23,17 +23,26 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
   // State and ref for 3D model viewer loading and errors
   const modelViewerRef = useRef<ModelViewerElement>(null);
   const [modelStatus, setModelStatus] = useState<'loading' | 'loaded' | 'error'>('loading');
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     // Attach event listeners to the model-viewer custom element
     if (previewType === '3d' && modelViewerRef.current) {
       const modelViewerElement = modelViewerRef.current;
       
-      const handleLoad = () => setModelStatus('loaded');
+      const handleLoad = () => {
+        setProgress(100);
+        setModelStatus('loaded');
+      };
       const handleError = () => setModelStatus('error');
+      const handleProgress = (event: any) => {
+        const p = Math.round(event.detail.totalProgress * 100);
+        setProgress(p > 100 ? 100 : p); // Cap progress at 100
+      };
       
       modelViewerElement.addEventListener('load', handleLoad);
       modelViewerElement.addEventListener('error', handleError);
+      modelViewerElement.addEventListener('progress', handleProgress);
       
       // Check if model is already loaded, as the event might fire before the effect runs
       if (modelViewerElement.loaded) {
@@ -43,6 +52,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
       return () => {
         modelViewerElement.removeEventListener('load', handleLoad);
         modelViewerElement.removeEventListener('error', handleError);
+        modelViewerElement.removeEventListener('progress', handleProgress);
       };
     }
   }, [previewType]);
@@ -53,7 +63,12 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
         return (
           <>
             {modelStatus === 'loading' && (
-              <div className="absolute inset-0 flex items-center justify-center text-gray-500 dark:text-gray-400">Loading 3D Preview...</div>
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-900 transition-opacity duration-300">
+                <div className="w-3/4 bg-gray-300 dark:bg-gray-700 rounded-full h-2.5 mb-2 overflow-hidden">
+                    <div className="bg-cyan-600 h-2.5 rounded-full transition-all duration-300 ease-linear" style={{ width: `${progress}%` }}></div>
+                </div>
+                <p className="text-sm font-medium">Loading 3D Preview... {progress}%</p>
+              </div>
             )}
             {modelStatus === 'error' && (
               game.fallbackImageUrl ? (
@@ -66,7 +81,12 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
                   height="192"
                 />
               ) : (
-                <div className="absolute inset-0 flex items-center justify-center text-red-500">3D Preview failed to load</div>
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-red-500">
+                   <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <p className="font-semibold">Preview Unavailable</p>
+                </div>
               )
             )}
             <model-viewer
@@ -75,7 +95,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
               alt={`3D preview for ${game.title}`}
               camera-controls
               auto-rotate
-              style={{ width: '100%', height: '100%', visibility: modelStatus === 'loaded' ? 'visible' : 'hidden', background: 'transparent' }}
+              style={{ width: '100%', height: '100%', visibility: modelStatus === 'loaded' ? 'visible' : 'hidden', background: 'transparent', transition: 'visibility 0.3s' }}
             />
           </>
         );
