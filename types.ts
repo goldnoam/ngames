@@ -1,7 +1,7 @@
-// Using `import * as React` is a more robust way to ensure the React namespace is
-// available for JSX type augmentation, regardless of the `esModuleInterop` compiler option.
-// This prevents the issue where augmenting JSX.IntrinsicElements overwrites the
-// standard HTML element types instead of merging with them.
+// FIX: Using 'import * as React' ensures that the React namespace and its associated
+// JSX type definitions are correctly loaded before attempting to augment the
+// JSX.IntrinsicElements interface. This resolves an issue where the interface was
+// being overwritten instead of augmented, causing standard HTML elements to be unrecognized.
 import * as React from 'react';
 
 export interface Game {

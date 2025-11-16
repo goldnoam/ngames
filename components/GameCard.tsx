@@ -131,8 +131,8 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
               alt={`3D preview for ${game.title}`}
               camera-controls
               auto-rotate
-              className="w-full h-full group-hover:scale-110"
-              style={{ visibility: modelStatus === 'loaded' ? 'visible' : 'hidden', background: 'transparent', transition: 'visibility 0.3s, transform 0.3s ease-in-out' }}
+              className="w-full h-full group-hover:scale-110 transition-transform duration-300 ease-in-out"
+              style={{ visibility: modelStatus === 'loaded' ? 'visible' : 'hidden', background: 'transparent', transition: 'visibility 0.3s ease-in-out' }}
             />
           </>
         );
