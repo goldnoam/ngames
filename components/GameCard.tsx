@@ -6,6 +6,8 @@ interface GameCardProps {
 }
 
 const GameCard: React.FC<GameCardProps> = ({ game }) => {
+  const is3DModel = game.realTimePreviewUrl.endsWith('.glb');
+
   return (
     <a
       href={game.url}
@@ -22,11 +24,23 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
         <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-20 transition-all duration-300"></div>
       </div>
       <div className="p-6">
-        <img
-          src={game.realTimePreviewUrl}
-          alt={`Real-time preview for ${game.title}`}
-          className="w-full rounded-md mb-4 border border-gray-200 dark:border-gray-700"
-        />
+        <div className="w-full h-48 mb-4 rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+          {is3DModel ? (
+            <model-viewer
+              src={game.realTimePreviewUrl}
+              alt={`3D preview for ${game.title}`}
+              camera-controls
+              auto-rotate
+              style={{ width: '100%', height: '100%' }}
+            />
+          ) : (
+            <img
+              src={game.realTimePreviewUrl}
+              alt={`Real-time preview for ${game.title}`}
+              className="w-full h-full object-cover"
+            />
+          )}
+        </div>
         <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300">{game.title}</h3>
         <p className="text-gray-600 dark:text-gray-400 text-base">{game.description}</p>
       </div>
