@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface Game {
   title: string;
   description: string;
@@ -9,14 +7,14 @@ export interface Game {
 }
 
 // FIX: Corrected the global JSX type definition for 'model-viewer'.
-// The previous declaration was overriding all standard HTML element types, causing widespread
-// TypeScript errors. Using `React.DetailedHTMLProps` ensures that the JSX.IntrinsicElements
-// interface is augmented correctly without losing the default types for elements like 'div', 'h1', etc.
+// The previous method of defining this type was overriding all standard HTML element types,
+// causing widespread TypeScript errors. Using inline `import('react')` types ensures that
+// the JSX.IntrinsicElements interface is augmented correctly without this issue.
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'model-viewer': React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement> & {
+      'model-viewer': import('react').DetailedHTMLProps<
+        import('react').HTMLAttributes<HTMLElement> & {
           src: string;
           alt: string;
           'camera-controls'?: boolean;

@@ -14,15 +14,15 @@ const App: React.FC = () => {
       title: t('zombieTitle'),
       description: t('zombieDesc'),
       url: 'https://zombie.vercel.app/',
-      thumbnailUrl: 'https://images.unsplash.com/photo-1618909491321-206a88536f98?q=80&w=1974&auto=format&fit=crop',
+      thumbnailUrl: 'https://images.unsplash.com/photo-1608889356338-782b8f683457?q=80&w=1974&auto=format&fit=crop',
       realTimePreviewUrl: 'https://modelviewer.dev/shared-assets/models/Astronaut.glb',
     },
     {
       title: t('skiTitle'),
       description: t('skiDesc'),
       url: 'https://skigame.vercel.app/',
-      thumbnailUrl: 'https://images.unsplash.com/photo-1549472539-b1d54238e55e?q=80&w=2070&auto=format&fit=crop',
-      realTimePreviewUrl: 'https://images.unsplash.com/photo-1613992349148-1171a39a2472?q=80&w=1974&auto=format&fit=crop',
+      thumbnailUrl: 'https://images.unsplash.com/photo-1519946399460-e6e236166427?q=80&w=2070&auto=format&fit=crop',
+      realTimePreviewUrl: 'https://cdn.glitch.global/6a815255-8602-4581-92d7-62389148d447/snowboarder.glb?v=1680016538181',
     },
   ];
 
