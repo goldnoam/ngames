@@ -109,7 +109,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
                 <img
                   src={game.fallbackImageUrl}
                   alt={`Preview for ${game.title}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out"
                   loading="lazy"
                   width="341"
                   height="192"
@@ -131,7 +131,8 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
               alt={`3D preview for ${game.title}`}
               camera-controls
               auto-rotate
-              style={{ width: '100%', height: '100%', visibility: modelStatus === 'loaded' ? 'visible' : 'hidden', background: 'transparent', transition: 'visibility 0.3s' }}
+              className="w-full h-full group-hover:scale-110"
+              style={{ visibility: modelStatus === 'loaded' ? 'visible' : 'hidden', background: 'transparent', transition: 'visibility 0.3s, transform 0.3s ease-in-out' }}
             />
           </>
         );
@@ -143,7 +144,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
             loop
             muted
             playsInline
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out"
           >
             Your browser does not support the video tag.
           </video>
@@ -154,7 +155,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
           <img
             src={game.realTimePreviewUrl}
             alt={`Real-time preview for ${game.title}`}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out"
             loading="lazy"
             width="341"
             height="192"
@@ -168,7 +169,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
       href={game.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 ease-in-out transform-gpu hover:-translate-y-2 hover:rotate-x-3 hover:-rotate-y-3"
+      className="block group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 ease-in-out transform-gpu hover:-translate-y-1 hover:rotate-x-2 hover:-rotate-y-2"
     >
       <div className="p-6">
         <div className="w-full h-48 mb-4 rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden bg-gray-100 dark:bg-gray-900 flex items-center justify-center relative">
