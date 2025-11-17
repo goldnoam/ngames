@@ -3,6 +3,7 @@ import Header from './components/Header';
 import GameCard from './components/GameCard';
 import Footer from './components/Footer';
 import Settings from './components/Settings';
+import KonamiEasterEgg from './components/KonamiEasterEgg';
 import { Game } from './types';
 import { useSettings } from './contexts/SettingsContext';
 
@@ -44,12 +45,20 @@ const App: React.FC = () => {
       url: 'https://charitygame.vercel.app/',
       realTimePreviewUrl: 'https://poly.pizza/download/m/b5H4P5sWeD/Poly.glb',
       fallbackImageUrl: 'https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=compress&cs=tinysrgb&w=600',
+    },
+    {
+      title: t('chipsTitle'),
+      description: t('chipsDesc'),
+      url: 'https://chipsgame.vercel.app/',
+      realTimePreviewUrl: 'https://poly.pizza/download/m/6_f9sS3P0f_/Poly.glb',
+      fallbackImageUrl: 'https://images.pexels.com/photos/327969/pexels-photo-327969.jpeg?auto=compress&cs=tinysrgb&w=600',
     }
   ];
 
   return (
     <div className="relative min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white flex flex-col font-sans transition-colors duration-300">
       <Settings />
+      <KonamiEasterEgg />
       <Header />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-12 [perspective:1000px]">

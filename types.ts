@@ -1,4 +1,4 @@
-// FIX: Changed the React import to be consistent with other files in the project. This resolves the module augmentation error.
+// FIX: Changed to a default import to align with the rest of the project and resolve module augmentation errors.
 import React from 'react';
 
 export interface Game {
@@ -10,6 +10,10 @@ export interface Game {
 }
 
 // By augmenting the 'react' module, we can add support for custom elements like 'model-viewer' to the JSX namespace.
+// FIX: The JSX namespace augmentation was incorrectly defined using `declare global`, which was overwriting
+// React's built-in types for standard HTML elements and causing numerous errors. This has been corrected
+// by using `declare module 'react'` to properly augment React's JSX types, which merges the custom
+// 'model-viewer' element with the standard intrinsic elements.
 declare module 'react' {
   namespace JSX {
     // Augmenting the IntrinsicElements interface to include the 'model-viewer' custom element.
