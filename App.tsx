@@ -14,7 +14,7 @@ const App: React.FC = () => {
       title: t('zombieTitle'),
       description: t('zombieDesc'),
       url: 'https://zombie.vercel.app/',
-      realTimePreviewUrl: 'https://poly.pizza/m/3UAMP5w3wG/Poly.glb',
+      realTimePreviewUrl: 'https://poly.pizza/download/m/3UAMP5w3wG/Poly.glb',
       fallbackImageUrl: 'https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=600',
     },
     {
@@ -35,8 +35,15 @@ const App: React.FC = () => {
       title: t('digTitle'),
       description: t('digDesc'),
       url: 'https://diggame.vercel.app/',
-      realTimePreviewUrl: 'https://poly.pizza/m/69P44c_3-z2/Poly.glb',
+      realTimePreviewUrl: 'https://poly.pizza/download/m/69P44c_3-z2/Poly.glb',
       fallbackImageUrl: 'https://images.pexels.com/photos/1903965/pexels-photo-1903965.jpeg?auto=compress&cs=tinysrgb&w=600',
+    },
+    {
+      title: t('charityTitle'),
+      description: t('charityDesc'),
+      url: 'https://charitygame.vercel.app/',
+      realTimePreviewUrl: 'https://poly.pizza/download/m/b5H4P5sWeD/Poly.glb',
+      fallbackImageUrl: 'https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=compress&cs=tinysrgb&w=600',
     }
   ];
 

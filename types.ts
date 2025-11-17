@@ -1,3 +1,4 @@
+// FIX: Changed the React import to be consistent with other files in the project. This resolves the module augmentation error.
 import React from 'react';
 
 export interface Game {
