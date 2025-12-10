@@ -37,7 +37,7 @@ const Header: React.FC = () => {
     <header className={`${headerBaseClasses} ${headerScrollClasses}`}>
       <h1 
         className={`${h1BaseClasses} ${h1ScrollClasses}`}
-        style={{ textShadow: '0 0 5px #06b6d4, 0 0 10px #06b6d4, 3px 3px 0px #0e7490, 6px 6px 0px rgba(0,0,0,0.2)' }}
+        style={{ textShadow: '0 0 8px rgba(6, 182, 212, 0.6), 0 0 12px rgba(6, 182, 212, 0.4)' }}
       >
         {t('welcome')}
       </h1>

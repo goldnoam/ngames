@@ -1,3 +1,4 @@
+
 export const translations = {
   en: {
     welcome: "Welcome to Noam Gold Games",
@@ -13,13 +14,30 @@ export const translations = {
     charityDesc: "Make a difference with every click. This game is dedicated to raising awareness and funds for important causes.",
     chipsTitle: "Chips Game",
     chipsDesc: "A fun and addictive casino-style chip game. Place your bets, test your luck, and aim for the jackpot.",
-    copyright: "© Noam Gold AI 2025",
+    pizzaTitle: "Pizza Maker",
+    pizzaDesc: "Craft your perfect pizza from scratch! Choose your crust, sauce, and toppings in this delicious culinary simulation.",
+    chemistryTitle: "Chemistry Game",
+    chemistryDesc: "Mix elements, discover compounds, and run your own virtual lab in this educational chemistry simulation.",
+    copyright: "© Noam Gold 2025",
     feedback: "Send Feedback",
     settings: "Settings",
     language: "Language",
     theme: "Theme",
     dark: "Dark",
     light: "Light",
+    // New category and filter translations
+    filterByCategory: "Filter by Category",
+    all: "All",
+    action: "Action",
+    strategy: "Strategy",
+    adventure: "Adventure",
+    simulation: "Simulation",
+    casino: "Casino",
+    // Search translations
+    searchPlaceholder: "Search games...",
+    // Empty state translations
+    noGamesFoundTitle: "No Games Found",
+    noGamesFoundDesc: "Try adjusting your search or category.",
   },
   he: {
     welcome: "ברוכים הבאים למשחקים של נועם גולד",
@@ -35,13 +53,30 @@ export const translations = {
     charityDesc: "עשו שינוי בכל קליק. המשחק הזה מוקדש להעלאת מודעות וגיוס כספים למטרות חשובות.",
     chipsTitle: "משחק צ'יפים",
     chipsDesc: "משחק צ'יפים מהנה וממכר בסגנון קזינו. הניחו את ההימורים שלכם, בחנו את מזלכם ונסו לזכות בקופה.",
-    copyright: "© נועם גולד AI 2025",
+    pizzaTitle: "יוצר פיצה",
+    pizzaDesc: "צרו את הפיצה המושלמת שלכם מאפס! בחרו את הבצק, הרוטב והתוספות בסימולציית קולינריה טעימה זו.",
+    chemistryTitle: "משחק כימיה",
+    chemistryDesc: "ערבבו יסודות, גלו תרכובות ונהלו מעבדה וירטואלית משלכם בסימולציית כימיה חינוכית זו.",
+    copyright: "© נועם גולד 2025",
     feedback: "שלח משוב",
     settings: "הגדרות",
     language: "שפה",
     theme: "ערכת נושא",
     dark: "כהה",
     light: "בהיר",
+    // New category and filter translations
+    filterByCategory: "סנן לפי קטגוריה",
+    all: "הכל",
+    action: "פעולה",
+    strategy: "אסטרטגיה",
+    adventure: "הרפתקאות",
+    simulation: "סימולציה",
+    casino: "קזינו",
+    // Search translations
+    searchPlaceholder: "חפש משחקים...",
+    // Empty state translations
+    noGamesFoundTitle: "לא נמצאו משחקים",
+    noGamesFoundDesc: "נסה לשנות את החיפוש או הקטגוריה.",
   },
 };
 
